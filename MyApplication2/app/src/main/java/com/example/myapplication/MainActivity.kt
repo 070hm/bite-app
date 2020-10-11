@@ -35,25 +35,14 @@ class MainActivity : AppCompatActivity() {
         var sw7 :Switch= findViewById(R.id.switch7)
         var result:TextView = findViewById(R.id.Result);
 
-        change(sw0,0);
-        change(sw1,1);
-        change(sw2,2);
-        change(sw3,3);
-        change(sw4,4);
-        change(sw5,5);
-        change(sw6,6);
-        change(sw7,7);
-        
-        //function to check two number using XOR operator
-        fun numberIsEqul(n1:String,n2:String):Boolean{
-            if(n1==""){
-                return false
-            }
-            else{
-                return ((n1.toInt() xor n2.toInt())==0)
-            }
-
-        }
+        onCheckedChange(sw0,0);
+        onCheckedChange(sw1,1);
+        onCheckedChange(sw2,2);
+        onCheckedChange(sw3,3);
+        onCheckedChange(sw4,4);
+        onCheckedChange(sw5,5);
+        onCheckedChange(sw6,6);
+        onCheckedChange(sw7,7);
 
 
         //to handle the number input and check if match with the result of the bitwise result
@@ -62,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             object : TextWatcher{
                 override fun afterTextChanged(s: Editable?) {
 
-                    if(numberIsEqul(s.toString(), bitwise.sum.toString())){
+                    if(bitwise.numberIsEqul(s.toString(), bitwise.sum.toString())){
                         frame.setBackgroundColor(Color.GREEN)
                     }
                     else{
@@ -76,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                     count: Int,
                     after: Int
                 ) {
-                    if(numberIsEqul(s.toString(), bitwise.sum.toString())){
+                    if(bitwise.numberIsEqul(s.toString(), bitwise.sum.toString())){
                         frame.setBackgroundColor(Color.GREEN)
                     }
                     else{
@@ -85,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if(numberIsEqul(s.toString(), bitwise.sum.toString())){
+                    if(bitwise.numberIsEqul(s.toString(), bitwise.sum.toString())){
                         frame.setBackgroundColor(Color.GREEN)
                     }
                     else{
@@ -107,7 +96,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-fun change (sw:Switch,p:Int){
+fun onCheckedChange(sw:Switch,p:Int){
     var  result= Result;
     sw?.setOnCheckedChangeListener(){ it , isChecked ->
         if (isChecked){

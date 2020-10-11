@@ -43,12 +43,26 @@ class MainActivity : AppCompatActivity() {
         change(sw5,5);
         change(sw6,6);
         change(sw7,7);
+        
+        //function to check two number using XOR operator
+        fun numberIsEqul(n1:String,n2:String):Boolean{
+            if(n1==""){
+                return false
+            }
+            else{
+                return ((n1.toInt() xor n2.toInt())==0)
+            }
+
+        }
+
+
         //to handle the number input and check if match with the result of the bitwise result
         inputNumbper.addTextChangedListener(
 
             object : TextWatcher{
                 override fun afterTextChanged(s: Editable?) {
-                    if(s.toString() == bitwise.sum.toString()){
+
+                    if(numberIsEqul(s.toString(), bitwise.sum.toString())){
                         frame.setBackgroundColor(Color.GREEN)
                     }
                     else{
@@ -62,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                     count: Int,
                     after: Int
                 ) {
-                    if(s== bitwise.sum.toString()){
+                    if(numberIsEqul(s.toString(), bitwise.sum.toString())){
                         frame.setBackgroundColor(Color.GREEN)
                     }
                     else{
@@ -71,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if(s== bitwise.sum.toString()){
+                    if(numberIsEqul(s.toString(), bitwise.sum.toString())){
                         frame.setBackgroundColor(Color.GREEN)
                     }
                     else{

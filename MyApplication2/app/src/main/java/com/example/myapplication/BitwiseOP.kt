@@ -20,6 +20,19 @@ class BitwiseOP {
 
     }
 
+    //function to check two number using XOR operator
+    fun numberIsEqul(n1:String,n2:String):Boolean{
+        if(n1==""){
+            return false
+        }
+        else{
+            return ((n1.toInt() xor n2.toInt())==0)
+        }
+
+    }
+
+
+
     //function convert String as  binary to number
     //return String
     fun convertToNumber(_binary: String): String {
